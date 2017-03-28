@@ -35,13 +35,13 @@ RUN cd /usr/local/ && curl -L -O http://dl.google.com/android/android-sdk_r24.4.
 
 # Install Gradle
 RUN cd /usr/local/ && \
-    curl -L -O https://services.gradle.org/distributions/gradle-2.10-all.zip && \
+    curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && \
     unzip -o gradle-2.10-all.zip && \
-    rm -rf   /usr/local/gradle-2.10-all.zip
+    rm -rf   /usr/local/gradle-3.3-all.zip
 
 # Environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle \
     JAVA8_HOME=/usr/lib/jvm/java-8-oracle \
     ANDROID_HOME=/usr/local/android-sdk-linux \
-    GRADLE_HOME=/usr/local/gradle-2.10 \
+    GRADLE_HOME=/usr/local/gradle-3.3 \
     PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin
