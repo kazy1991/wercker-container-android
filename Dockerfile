@@ -23,25 +23,25 @@ RUN \
   rm -rf /var/cache/oracle-jdk8-installer
 
 # Android SDK installation
-RUN cd /usr/local/ && curl -L -O http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && tar xf android-sdk_r24.4.1-linux.tgz && \
+RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/tools_r25.2.3-linux.zip && unzip -qq tools_r25.2.3-linux.zip -d android-sdk-linux && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "tools" && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "platform-tools" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "build-tools-23.0.3,android-23" && \
+    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "build-tools-25.0.2,android-25" && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-google-google_play_services" && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-google-m2repository" && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-android-m2repository" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "addon-google_apis-google-23" && \
+    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "addon-google_apis-google-24" && \
     rm -rf /usr/local/android-sdk_r24.4.1-linux.tgz
 
 # Install Gradle
 RUN cd /usr/local/ && \
-    curl -L -O https://services.gradle.org/distributions/gradle-2.10-all.zip && \
-    unzip -o gradle-2.10-all.zip && \
-    rm -rf   /usr/local/gradle-2.10-all.zip
+    curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && \
+    unzip -qq -o gradle-3.3-all.zip && \
+    rm -rf   /usr/local/gradle-3.3-all.zip
 
 # Environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle \
     JAVA8_HOME=/usr/lib/jvm/java-8-oracle \
     ANDROID_HOME=/usr/local/android-sdk-linux \
-    GRADLE_HOME=/usr/local/gradle-2.10 \
+    GRADLE_HOME=/usr/local/gradle-3.3 \
     PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin
