@@ -33,6 +33,11 @@ RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/tools_
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "addon-google_apis-google-24" && \
     rm -rf /usr/local/android-sdk_r24.4.1-linux.tgz
 
+# Add license flies
+RUN mkdir -p /usr/local/android-sdk-linux/licenses \
+    echo "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > /usr/local/android-sdk-linux/licenses/android-sdk-license \
+    echo "\nd975f751698a77b662f1254ddbeed3901e976f5a" > /usr/local/android-sdk-linux/licenses/intel-android-extra-license
+
 # Install Gradle
 RUN cd /usr/local/ && \
     curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && \
