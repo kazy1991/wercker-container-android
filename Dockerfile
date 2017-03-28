@@ -36,7 +36,7 @@ RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/tools_
 # Install Gradle
 RUN cd /usr/local/ && \
     curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && \
-    unzip -o gradle-2.10-all.zip && \
+    unzip -qq -o gradle-3.3-all.zip && \
     rm -rf   /usr/local/gradle-3.3-all.zip
 
 # Environment variables
