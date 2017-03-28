@@ -2,4 +2,4 @@ timeout: 40m
 steps:
   - name: gcr.io/cloud-builders/docker
   - args: ['build', '--tag=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '.']
-  - images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
