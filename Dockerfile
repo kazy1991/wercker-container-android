@@ -40,12 +40,12 @@ RUN mkdir -p /usr/local/android-sdk-linux/licenses && \
 
 # Install Gradle
 RUN cd /tmp && \
-    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4-all.zip &&
-    ./gradlew tasks &&
-    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4.1-all.zip &&
-    ./gradlew tasks &&
-    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.5-all.zip &&
-    ./gradlew tasks &&
+    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4-all.zip && \
+    ./gradlew tasks && \
+    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4.1-all.zip && \
+    ./gradlew tasks && \
+    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.5-all.zip && \
+    ./gradlew tasks && \
     rm -rf /tmp
 
 # Environment variables
