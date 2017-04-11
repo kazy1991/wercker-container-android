@@ -31,7 +31,7 @@ RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/tools_
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-google-m2repository" && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-android-m2repository" && \
     echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "addon-google_apis-google-24" && \
-    rm -rf /usr/local/android-sdk_r24.4.1-linux.tgz
+    rm -rf /usr/local/tools_r25.2.3-linux.zip
 
 # Add license flies
 RUN mkdir -p /usr/local/android-sdk-linux/licenses && \
