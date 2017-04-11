@@ -5,7 +5,7 @@ MAINTAINER kazuki-yoshida <kzk.yshd@gmail.com>
 RUN \
   apt-get update -y && \
   apt-get upgrade -y && \
-  apt-get install git-core build-essential zip curl python-pip python-software-properties apt-file lib32z1 -y && \
+  apt-get install gradle git-core build-essential zip curl python-pip python-software-properties apt-file lib32z1 -y && \
   apt-file update -y && \
   apt-get install software-properties-common -y && \
   apt-add-repository ppa:brightbox/ruby-ng -y && \
@@ -39,10 +39,14 @@ RUN mkdir -p /usr/local/android-sdk-linux/licenses && \
     echo "\nd975f751698a77b662f1254ddbeed3901e976f5a" > /usr/local/android-sdk-linux/licenses/intel-android-extra-license
 
 # Install Gradle
-RUN cd /usr/local/ && \
-    curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && \
-    unzip -qq -o gradle-3.3-all.zip && \
-    rm -rf   /usr/local/gradle-3.3-all.zip
+RUN cd /tmp && \
+    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4-all.zip &&
+    ./gradlew tasks &&
+    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4.1-all.zip &&
+    ./gradlew tasks &&
+    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.5-all.zip &&
+    ./gradlew tasks &&
+    rm -rf /tmp
 
 # Environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle \
