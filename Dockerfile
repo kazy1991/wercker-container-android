@@ -38,13 +38,6 @@ RUN mkdir -p /usr/local/android-sdk-linux/licenses && \
     echo "\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e" > /usr/local/android-sdk-linux/licenses/android-sdk-license && \
     echo "\nd975f751698a77b662f1254ddbeed3901e976f5a" > /usr/local/android-sdk-linux/licenses/intel-android-extra-license
 
-# Install Gradle
-RUN cd /tmp && \
-    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.4.1-all.zip && \
-    ./gradlew tasks && \
-    gradle wrapper --gradle-distribution-url https://services.gradle.org/distributions/gradle-3.5-all.zip && \
-    ./gradlew tasks
-
 # Environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle \
     JAVA8_HOME=/usr/lib/jvm/java-8-oracle \
