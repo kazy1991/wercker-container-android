@@ -3,6 +3,7 @@ MAINTAINER kazuki-yoshida <kzk.yshd@gmail.com>
 
 # Basic environment setup
 RUN \
+  export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
   apt-get upgrade -y && \
   apt-get install gradle git-core build-essential zip curl python-pip python-software-properties apt-file lib32z1 -y && \
@@ -24,7 +25,7 @@ RUN \
 
 # Android SDK installation
 RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && unzip -qq sdk-tools-linux-3859397.zip -d android-sdk-linux && \
-    /usr/local/android-sdk-linux/tools/bin/sdkmanager "tools" "platform-tools" "build-tools;26.0.2" "platforms;android-26" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" \
+    /usr/local/android-sdk-linux/tools/bin/sdkmanager "tools" "platform-tools" "build-tools;26.0.2" "platforms;android-26" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" && \
     rm -rf /usr/local/sdk-tools-linux-3859397.zip
 
 # Add license flies
