@@ -23,15 +23,9 @@ RUN \
   rm -rf /var/cache/oracle-jdk8-installer
 
 # Android SDK installation
-RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/tools_r25.2.3-linux.zip && unzip -qq tools_r25.2.3-linux.zip -d android-sdk-linux && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "tools" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "platform-tools" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "build-tools-25.0.2,android-25" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-google-google_play_services" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-google-m2repository" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "extra-android-m2repository" && \
-    echo y | /usr/local/android-sdk-linux/tools/android update sdk --no-ui --force --all --filter "addon-google_apis-google-24" && \
-    rm -rf /usr/local/tools_r25.2.3-linux.zip
+RUN cd /usr/local/ && curl -L -O https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && unzip -qq sdk-tools-linux-3859397.zip -d android-sdk-linux && \
+    /usr/local/android-sdk-linux/tools/bin/sdk/sdkmanager "tools" "platform-tools" "build-tools;27.0.0" "platforms;android-26" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository"
+    rm -rf /usr/local/sdk-tools-linux-3859397.zip
 
 # Add license flies
 RUN mkdir -p /usr/local/android-sdk-linux/licenses && \
